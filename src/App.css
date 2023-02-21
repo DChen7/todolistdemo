@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.Page {
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-top: 150px;
+}
+
+.TodosContainer {
+}
+
+.TodoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 4px;
+}
