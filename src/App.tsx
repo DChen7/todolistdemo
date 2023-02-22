@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { Button, CloseButton, Form } from "react-bootstrap";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { COMPLETED_ITEMS_KEY } from "./completed";
 
 function App() {
   const [todoList, setTodoList] = useState<string[]>(["test1", "test2"]);
@@ -54,9 +55,19 @@ function App() {
                   Edit
                 </Button>
                 <CloseButton
-                  onClick={() =>
-                    setTodoList(todoList.filter((_, idx) => i !== idx))
-                  }
+                  onClick={() => {
+                    setTodoList(todoList.filter((_, idx) => i !== idx));
+                    const completedStr =
+                      localStorage.getItem(COMPLETED_ITEMS_KEY);
+                    const completedItems: string[] = completedStr
+                      ? JSON.parse(completedStr)
+                      : [];
+                    completedItems.push(t);
+                    localStorage.setItem(
+                      COMPLETED_ITEMS_KEY,
+                      JSON.stringify(completedItems)
+                    );
+                  }}
                 />
               </div>
             </div>
